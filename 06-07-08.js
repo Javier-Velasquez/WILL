@@ -4,6 +4,7 @@
   código dentro de las funciones ya definidas. 
   No comentar la funcion 
 */
+
 function crearClasePersona() {
   class Persona {
     constructor(nombre, edad, hobbies, amigos) {
@@ -11,6 +12,10 @@ function crearClasePersona() {
       // Inicializar las propiedades de la persona con los valores recibidos como argumento
 
       // Tu código aca:
+      this.nombre = nombre;
+      this.edad = edad;
+      this.hobbies = hobbies;
+      this.amigos = amigos;
 
     }
 
@@ -20,7 +25,11 @@ function crearClasePersona() {
       // No debe retornar nada.
 
       // Tu código aca:
-
+      let persona = {
+          nombre: nombre,
+          edad: edad
+      }
+      this.amigos.push(persona)
     }
 
     addHobby(hobby) {
@@ -28,7 +37,7 @@ function crearClasePersona() {
       // No debe retornar nada.
 
       // Tu código aca:
-
+      this.hobbies.push(hobby)
     }
     getFriends() {
       // El método 'getFriends' debe retornar un arreglo con sólo los nombres del arreglo de amigos
@@ -38,7 +47,10 @@ function crearClasePersona() {
       // persona.getFriends() debería devolver ['martin', 'toni']
 
       // Tu código aca:
+      
+          var verAmigos = this.amigos.map((friend) => friend.nombre)
 
+      return verAmigos;
     }
 
     getHobbies() {
@@ -47,6 +59,7 @@ function crearClasePersona() {
       // persona.getHobbies() debe devolver ['correr', 'dormir', 'nadar']
 
       // Tu código aca:
+      return this.hobbies;
 
     }
 
@@ -66,13 +79,20 @@ function crearClasePersona() {
       // persona.getPromedioEdad() debería devolver 29 ya que (33 + 25) / 2 = 29
 
       // Tu código aca:
+      var promedioEdad = 0;
+      var divisor = 0;
+      for(let i = 0; i<this.amigos.length; i++){
+          promedioEdad += this.amigos[i].edad
+          divisor += 1
+      }
 
+      promedioEdad = promedioEdad/(divisor)
+      return promedioEdad;
     }
   };
 
   return Persona;
 }
-
 // No modifiques nada debajo de esta linea //
 
 module.exports = crearClasePersona
